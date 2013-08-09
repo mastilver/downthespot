@@ -1,0 +1,117 @@
+function Download(tracksInfo, downloadLinks)
+{
+	this.tracksInfo = tracksInfo;
+	this.downloadLinks = downloadLinks;
+	this.Files = new Array();
+	
+	
+	var_dump(this.tracksInfo);
+	var_dump(this.downloadLinks);
+	
+	
+	
+	var popUp = document.createElement('div');
+	
+	var downloadAllButton = document.createElement('input');
+	downloadAllButton.type = 'submit';
+	downloadAllButton.value = 'download all tracks';
+	
+	var objRef = this;
+	downloadAllButton.addEventListener('click', function()
+	{
+		objRef.downloadAllTracks();
+	});
+	
+	popUp.appendChild(downloadAllButton);
+	
+	
+	for(var i = 0; i < this.tracksInfo.length; i++)
+	{
+		var trackDiv = document.createElement('div');
+		
+		var trackName = document.createElement('p');
+		trackName.innerHTML = this.tracksInfo[i]['name'];
+		
+		var trackDownloadLink = document.createElement('a');
+		trackDownloadLink.innerHTML = 'Download';
+		trackDownloadLink.href = this.downloadLinks[i];
+		trackDownloadLink.addEventListener('click', this.downLoadTriggedTrack);
+		
+		
+		
+		
+		
+		
+		trackDiv.appendChild(trackName);
+		trackDiv.appendChild(trackDownloadLink);
+		
+		popUp.appendChild(trackDiv);
+	}
+	
+	document.body.appendChild(popUp);
+}
+
+Download.prototype =
+{
+	downloadTrack : function(trackNumber)
+	{
+		//window.open(this.downloadLinks[trackNumber], 'download' + trackNumber);
+
+		console.log('download starting');
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', this.downloadLinks[trackNumber]);
+		xhr.responseType = 'arraybuffer';
+		
+		//xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+		
+		var objRef = this;
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				
+				console.log('download finish');
+				
+				/*var builder = new WebKitBlobBuilder();
+				builder.append(this.response);
+				
+				var trackBlob = builder.getBlob('application/octet-stream');*/
+				
+				
+				var trackBlob = new Blob([this.response], {type: 'application/octet-stream'});
+				
+				trackBlobUrl = URL.createObjectURL(trackBlob);
+				trackName = objRef.tracksInfo[trackNumber]['name'] + ' - ';
+				
+				
+				alert(trackName);
+				
+				window.open(trackBlobUrl, trackName);
+			}
+		};
+		
+		xhr.send(null);
+		
+		console.log('download started')
+		
+	},
+	
+	downloadAllTracks : function()
+	{
+		//alert(this.downloadLinks.length);
+		
+		for(var i = 0, c = this.downloadLinks.length; i < c; i++)
+		{
+			this.downloadTrack(i);
+		}
+	},
+	
+	downloadTriggeredTrack : function(e)
+	{
+		
+		
+		
+		e.preventDefault();
+	}
+}

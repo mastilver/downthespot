@@ -1,0 +1,7 @@
+down_the_spot_site_homepage:
+    pattern:  /
+    defaults: { _controller: DownTheSpotSiteBundle:Site:index }
+
+down_the_spote_site_download:
+    pattern: /download
+    defaults: { _controller: DownTheSpotSiteBundle:Site:download }

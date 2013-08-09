@@ -1,0 +1,4 @@
+down_the_spot_site:
+    resource: "@DownTheSpotSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+

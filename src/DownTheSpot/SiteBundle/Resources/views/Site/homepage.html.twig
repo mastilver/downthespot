@@ -1,0 +1,22 @@
+{% extends "DownTheSpotSiteBundle::layout.html.twig" %}
+
+{% block body %}
+	<form method="post" id="downloadForm" action="app_dev.php/download">
+		<textarea name="tracksInfo" id="tracksInfo">
+		http://open.spotify.com/track/5FKnuwsKf7YFpmhA5Wnl0q http://open.spotify.com/track/0nbOXVxcq4wSPamBPxAKGu http://open.spotify.com/track/1CmUZGtH29Kx36C1Hleqlz
+		</textarea>
+		<input type="submit" value="Récupérez les liens"/>
+	</form>
+	
+	http://open.spotify.com/track/2CVqF1sLhwut4NiZxzNUnC<br>
+	http://open.spotify.com/album/5TtMCg2nLTfJvJXUwfgRlC
+{% endblock %}
+
+{% block javascript %}
+	{% javascripts '@DownTheSpotSiteBundle/Resources/public/js/Download.js'
+					'@DownTheSpotSiteBundle/Resources/public/js/FetchData.js'
+					'@DownTheSpotSiteBundle/Resources/public/js/Form.js'
+					'@DownTheSpotSiteBundle/Resources/public/js/Main.js' %}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
