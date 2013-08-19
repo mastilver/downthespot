@@ -1,6 +1,9 @@
 window.onload = function()
 {
 	new Form;
+	
+	//new Download(JSON.parse('[{"name":"another love","artists":["tom odell"]},{"name":"feeling good","artists":["nina simone"]},{"name":"thrift shop","artists":["macklemore & ryan lewis"]}]'),
+	//			JSON.parse('["http://a.tumblr.com/tumblr_lvderzjTG61r6eesvo1.mp3","http://thelookback.com/noise/20080704/01%20-%20Nina%20Simone%20-%20Feeling%20Good.mp3","http://thissongissick.com/blog/wp-content/uploads/2012/08/01-Thrift-Shop-feat.-Wanz.mp3"]'));
 };
 
 

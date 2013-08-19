@@ -4,9 +4,9 @@ function Download(tracksInfo, downloadLinks)
 	this.downloadLinks = downloadLinks;
 	this.Files = new Array();
 	
-	
-	var_dump(this.tracksInfo);
-	var_dump(this.downloadLinks);
+		// DEV //
+	//var_dump(this.tracksInfo);
+	//var_dump(this.downloadLinks);
 	
 	
 	
@@ -35,11 +35,16 @@ function Download(tracksInfo, downloadLinks)
 		var trackDownloadLink = document.createElement('a');
 		trackDownloadLink.innerHTML = 'Download';
 		trackDownloadLink.href = this.downloadLinks[i];
-		trackDownloadLink.addEventListener('click', this.downLoadTriggedTrack);
+		trackDownloadLink.setAttribute('data-trackNumber', i);
+		
+		var objRef = this;
+		trackDownloadLink.addEventListener('click', function(e)
+		{
+			objRef.downloadTrack(e.target.getAttribute('data-tracknumber'));
 		
 		
-		
-		
+			e.preventDefault();
+		});
 		
 		
 		trackDiv.appendChild(trackName);
@@ -51,47 +56,84 @@ function Download(tracksInfo, downloadLinks)
 	document.body.appendChild(popUp);
 }
 
+/*
+ * 
+ * name: appendChild
+ * @param
+ * @return
+ * 
+ */
 Download.prototype =
 {
 	downloadTrack : function(trackNumber)
 	{
-		//window.open(this.downloadLinks[trackNumber], 'download' + trackNumber);
-
 		console.log('download starting');
 		
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', this.downloadLinks[trackNumber]);
-		xhr.responseType = 'arraybuffer';
 		
-		//xhr.setRequestHeader('Content-Type', 'application/octet-stream');
 		
-		var objRef = this;
-		xhr.onreadystatechange = function()
+			//     LINK METHOD     //
+			
+		var link = document.createElement('a');
+	    link.setAttribute('href', this.downloadLinks[trackNumber]);
+	    link.setAttribute('download', this.tracksInfo[trackNumber].name);
+	    link.click();
+		
+		
+			//     IFRAME METHOD     //
+		
+		/*var iframe = document.createElement('iframe');
+		iframe.setAttribute("src", this.downloadLinks[trackNumber]);
+		//iframe.style.display = "none";
+		document.body.appendChild(iframe);
+		
+		var_dump(iframe.contentWindow.document.body);
+		
+		
+		
+		iframe.load = function()
 		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				
-				console.log('download finish');
-				
-				/*var builder = new WebKitBlobBuilder();
-				builder.append(this.response);
-				
-				var trackBlob = builder.getBlob('application/octet-stream');*/
-				
-				
-				var trackBlob = new Blob([this.response], {type: 'application/octet-stream'});
-				
-				trackBlobUrl = URL.createObjectURL(trackBlob);
-				trackName = objRef.tracksInfo[trackNumber]['name'] + ' - ';
-				
-				
-				alert(trackName);
-				
-				window.open(trackBlobUrl, trackName);
-			}
-		};
+			alert('test');
+		};*/
 		
-		xhr.send(null);
+		
+			//     BLOB METHOD     //
+		
+		//var xhr = new XMLHttpRequest();
+		//xhr.open('GET', this.downloadLinks[trackNumber]);
+		//xhr.responseType = 'arraybuffer';
+		
+		////xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+		
+		//var objRef = this;
+		//xhr.onreadystatechange = function()
+		//{
+			//if (this.readyState == 4 && this.status == 200)
+			//{
+				
+				//console.log('download finish');
+				
+				//var r = new FileReader();
+				//r.onload = function(e)
+				//{
+					//alert("file loaded");
+				//};
+				
+				//r.readAsText(this.response);
+				
+				
+				///*var trackBlob = new Blob([this.response], {type: 'application/octet-stream'});
+				
+				//trackBlobUrl = URL.createObjectURL(trackBlob);
+				//trackName = objRef.tracksInfo[trackNumber]['name'] + ' - ';
+				
+				
+				//alert(trackName);
+				
+				//window.open(trackBlobUrl, trackName);*/
+			//}
+		//};
+		
+		//xhr.send(null);
 		
 		console.log('download started')
 		
@@ -109,7 +151,9 @@ Download.prototype =
 	
 	downloadTriggeredTrack : function(e)
 	{
+		//alert(e.target.getAttribute('data-tracknumber'));
 		
+		this.downloadTrack(e.target.getAttribute('data-tracknumber'));
 		
 		
 		e.preventDefault();

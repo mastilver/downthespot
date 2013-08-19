@@ -1,15 +1,26 @@
 {% extends "DownTheSpotSiteBundle::layout.html.twig" %}
 
 {% block body %}
+	<h1>DownTheSpot</h1>
+	<p>
+		This website is in <strong>alpha</strong>, some feature may not work properly, or some bug may appear.</br>
+		You are not 100% sure to get you the right files (It could be me remix, sample ... tracks), we are trying to fix this issue.</br>
+		For the moment, this web site is only working with <strong>spotify</strong> (deezer will be implemented soon).</br>
+		As we are not working with or own database, it takes a <strong>long time</strong> to get tracks information (depend on the server connection, it could take about 30 second per tracks)
+	</p>
 	<form method="post" id="downloadForm" action="app_dev.php/download">
-		<textarea name="tracksInfo" id="tracksInfo">
-		http://open.spotify.com/track/5FKnuwsKf7YFpmhA5Wnl0q http://open.spotify.com/track/0nbOXVxcq4wSPamBPxAKGu http://open.spotify.com/track/1CmUZGtH29Kx36C1Hleqlz
-		</textarea>
-		<input type="submit" value="Récupérez les liens"/>
+		<textarea name="tracksInfo" id="tracksInfo"></textarea>
+		<input type="submit" value="Get tracks links"/>
 	</form>
-	
-	http://open.spotify.com/track/2CVqF1sLhwut4NiZxzNUnC<br>
-	http://open.spotify.com/album/5TtMCg2nLTfJvJXUwfgRlC
+	<small>
+		Help:</br>
+		Open your spotify app.</br>
+		Select tracks you want to download.</br>
+		Copy them (Ctrl + C).</br>
+		And paste them (Ctrl + V) into the form above.</br>
+		Click on "get tracks link"</br>
+		Wait a bit until tracks appear.
+	</small>
 {% endblock %}
 
 {% block javascript %}
