@@ -10,5 +10,5 @@
 <h4>Installing dependancies</h4>
 
 - Open a console and type: 'npm install'
-- Run the app: 'node app.js'
+- Run the app: 'npm start'
 - Open a browser at this address: http://localhost:3000/
