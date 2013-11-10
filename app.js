@@ -1,12 +1,12 @@
 var express = require('express');
 
 var app = express();
-var server = require('http').createServer(app)
-var io = require('socket.io').listen(server);
+//var server = require('http').createServer(app)
+//var io = require('socket.io').listen(server);
 
 var getLink = require('./getLink.js');
 
-app.use(express.static(__dirname + './client/app'));
+app.use(express.static(__dirname + '/client/app'));
 
 app.post('/getDownloadLink', function(req, res)
 {
@@ -23,6 +23,7 @@ app.post('/getDownloadLink', function(req, res)
 
 var port = process.env.PORT || 3000;
 app.listen(port);
+console.log('server listening at ' + port);
 
 
 /*io.on('connect', function(socket)
