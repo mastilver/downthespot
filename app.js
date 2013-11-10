@@ -6,8 +6,7 @@ var io = require('socket.io').listen(server);
 
 var getLink = require('./getLink.js');
 
-app.use(express.static(__dirname + '/../client/app'))
-.use(express.bodyParser());
+app.use(express.static(__dirname + './client/app'));
 
 app.post('/getDownloadLink', function(req, res)
 {
@@ -21,10 +20,12 @@ app.post('/getDownloadLink', function(req, res)
 	});
 });
 
-app.listen(3000);
+
+var port = process.env.PORT || 3000;
+app.listen(port);
 
 
-io.on('connect', function(socket)
+/*io.on('connect', function(socket)
 {
 	socket.on('getDownloadLink', function(data)
 	{
@@ -34,4 +35,4 @@ io.on('connect', function(socket)
 			socket.emit('downloadLink', data.downloadLink)
 		});
 	});
-});
+});*/
