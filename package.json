@@ -1,6 +1,6 @@
 {
   "name": "DownTheSpot",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Used to download track from your spotify/deezer libraries",
   "main": "app.js",
   "directories": {
@@ -9,11 +9,13 @@
   "dependencies": {
     "express": "~3.4.4",
     "request": "~2.27.0",
-    "socket.io": "~0.9.16"
+    "socket.io": "~0.9.16",
+    "bower": "~1.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "mastilver",
   "license": "BSD-2-Clause"

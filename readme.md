@@ -9,9 +9,6 @@
 
 <h4>Installing dependancies</h4>
 
-- Go to client folder
-- Open a console and type: 'bower install'
-- Go back to root folder and open server folder
 - Open a console and type: 'npm install'
 - Run the app: 'node app.js'
 - Open a browser at this address: http://localhost:3000/
