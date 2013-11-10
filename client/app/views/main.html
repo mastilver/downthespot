@@ -1,0 +1,23 @@
+<div ng-controller="FormCtrl" >
+	<h1>DownTheSpot</h1>
+	<p>
+		This website is in <strong>alpha</strong>, some feature may not work properly, or some bug may appear.</br>
+		You are not 100% sure to get you the right files (It could be me remix, sample ... tracks), we are trying to fix this issue.</br>
+		For the moment, this web site is only working with <strong>spotify</strong> (deezer will be implemented soon).</br>
+		As we are not working with our own database, it takes <strong>few secondes</strong> to get tracks information.
+	</p>
+	<form>
+		<textarea ng-model="formContent" ></textarea></br>
+		<button ng-click="submit()">Get download links</button>
+	</form>
+
+	<small>
+		Help:</br>
+		Open your spotify app.</br>
+		Select tracks you want to download.</br>
+		Copy them (Ctrl + C).</br>
+		And paste them (Ctrl + V) into the box above.</br>
+		Click on "get tracks link"</br>
+		Wait a bit until tracks appear.
+	</small>
+</div>

@@ -1,0 +1,14 @@
+<p>As this is only an alpha version, to download track:</p>
+<ul>
+	<li>right click on 'download'</li>
+	<li>select 'save link as...' and download it</li>
+</ul>
+<div ng-repeat='trackInfo in tracksInfo'>
+	<div >
+		{{trackInfo.name}} - 
+		<span ng-repeat='artist in trackInfo.artists' class="muted">
+			{{artist}}<span ng-hide="$last">,</span>
+		</span>
+		<a href="{{ trackInfo.downloadLink }}" ng-show="trackInfo.downloadLink" >download</a>
+	</div>
+</div>
