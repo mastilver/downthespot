@@ -16,10 +16,22 @@ app.use(express.static(__dirname + '/client/app'));
 
 app.post('/getDownloadLink', function(req, res)
 {
+	
+
 	getLink(req.body)
 	.on('finish', function(data)
 	{
 		res.end(data.downloadLink);
+
+		console.log('download link found: ' + data.downloadLink + ' for:');
+		console.log(req.body);
+		console.log('\n');
+	})
+	.on('failed', function(data)
+	{
+		console.log('download link not found for:');
+		console.log(req.body);
+		console.log('\n');
 	});
 });
 
