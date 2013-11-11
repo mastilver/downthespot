@@ -1,4 +1,3 @@
-var linq = require('linq');
 var EventEmitter = require('events').EventEmitter;
 var request = require('request');
 
