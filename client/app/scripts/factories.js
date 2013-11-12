@@ -31,6 +31,13 @@ angular.module('downTheSpot')
 							trackInfo.artists.push(newTrackInfo.track.artists[artist].name);
 						}
 
+						trackInfo.isrc = newTrackInfo.track['external-ids'].filter(function(x){ return x.type === 'isrc'})[0].id;
+
+						console.log(newTrackInfo.track['external-ids']);
+
+						console.log(trackInfo);
+
+
 						factory.tracksInfo.push(trackInfo);
 					}
 				},

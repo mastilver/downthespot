@@ -1,5 +1,6 @@
 var express = require('express');
 var connect = require('connect');
+var request = require('request');
 
 var app = express();
 app.use(connect.urlencoded());
@@ -40,6 +41,10 @@ var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('server listening at ' + port);
 
+request('http://musicbrainz.org/ws/2/recording?query=isrc:USMC19757291&fmt=json', function(error, response, body)
+{
+	console.log(body);
+});
 
 /*io.on('connect', function(socket)
 {

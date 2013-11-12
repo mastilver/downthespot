@@ -9,6 +9,7 @@
 		<span ng-repeat='artist in trackInfo.artists' class="muted">
 			{{artist}}<span ng-hide="$last">,</span>
 		</span>
+		{{trackInfo.isrc}}
 		<a href="{{ trackInfo.downloadLink }}" ng-show="trackInfo.downloadLink" >download</a>
 	</div>
 </div>
