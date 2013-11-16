@@ -104,7 +104,8 @@ angular.module('downTheSpot')
 				$http.post('/getDownloadLink',
 				{
 					'name': factory.tracksInfo[trackNum].name,
-					'artists': factory.tracksInfo[trackNum].artists
+					'artists': factory.tracksInfo[trackNum].artists,
+					'isrc': factory.tracksInfo[trackNum].isrc
 				})
 				.then(function(response, status)
 				{
