@@ -2,7 +2,7 @@
   "name": "DownTheSpot",
   "version": "0.1.2",
   "description": "Used to download track from your spotify/deezer libraries",
-  "main": "app.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
@@ -10,7 +10,8 @@
     "express": "*",
     "request": "*",
     "connect": "*",
-    "bower": "*"
+    "bower": "*",
+    "xml2js": "*"
   },
   "devDependencies": {},
   "scripts": {
