@@ -1,6 +1,6 @@
 {
   "name": "DownTheSpot",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "description": "Used to download track from your spotify/deezer libraries",
   "main": "server.js",
   "directories": {
